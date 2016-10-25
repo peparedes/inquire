@@ -1,0 +1,3 @@
+:load utils.scala
+:load memQuery_comp.scala
+:load full_query_context_v2.scala

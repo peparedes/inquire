@@ -1,0 +1,3 @@
+:load utils.scala
+:load memQuery_comp.scala
+:load full_savevec_v2.scala
