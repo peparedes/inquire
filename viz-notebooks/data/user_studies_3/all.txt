@@ -1,0 +1,4 @@
+0
+I can kill this diabetes monster
+MIN WORD = 20
+

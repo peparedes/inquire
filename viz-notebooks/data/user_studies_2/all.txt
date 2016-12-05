@@ -1,0 +1,149 @@
+0
+family holiday
+MIN WORD = 1
+
+1
+family holiday
+
+2
+family holiday
+MIN WORD = 30
+
+3
+family [10] holiday
+
+4
+family [2] holiday
+
+5
+family holiday
+EXCLUDE family
+
+6
+family [2] holiday
+EXCLUDE family
+
+7
+family emotion
+
+8
+family [10] emotion
+
+9
+family [2] emotion
+
+10
+family [2] feeling happy or sad
+
+11
+family feeling happy or sad
+
+12
+family feeling happy or sad
+EXCLUDE happy
+
+13
+trusting relationship
+EXCLUDE happy
+
+14
+trusting relationship
+EXCLUDE relationship
+
+15
+trusting [2] relationship
+
+16
+trusting [2] relationship
+EXCLUDE trusting
+
+17
+trusting [2] relationship
+EXCLUDE trusting
+MIN WORD = 1
+
+18
+i broke up with my boyfriend
+
+19
+activism
+
+20
+democracy participation
+
+21
+democracy participation technology
+
+22
+i use the internet for democracy
+
+23
+i use the internet for social activism
+
+24
+i use the internet for social activism [10]
+
+25
+i use the internet [10] for social activism [10]
+
+26
+i use the internet [5] for social activism [10]
+
+27
+i use the internet [5] for activism [10]
+
+28
+i use the internet [5] for activism [10]
+
+29
+online deliberation
+
+30
+online deliberation [10]
+
+31
+online deliberation [2]
+
+32
+online deliberation [2]
+EXCLUDE online
+
+33
+i like moveon [10]
+EXCLUDE like
+
+34
+i think moveon [10] is important
+EXCLUDE like
+
+35
+remembrance
+
+36
+i enjoy revisiting memories from my past
+
+37
+into old memories my mind wanders
+
+38
+into old memories my mind wanders
+EXCLUDE memories
+
+39
+sharing my old memories
+
+40
+sharing my old memories
+EXCLUDE memories
+
+41
+sharing [2] my old memories
+
+42
+sharing memories with my grandma makes me feel good
+EXCLUDE memories
+
+43
+so many fun memories being rebellious with my friends
+you make me laugh with all our silly memories
+
