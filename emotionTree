@@ -1,0 +1,768 @@
+//http://bl.ocks.org/d3noob/8375092
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+
+    <title>Tree Example</title>
+
+    <style>
+	
+	.node {
+		cursor: pointer;
+	}
+
+	.node circle {
+	  fill: #fff;
+	  stroke: steelblue;
+	  stroke-width: 3px;
+	}
+
+	.node text {
+	  font: 12px sans-serif;
+	}
+
+	.link {
+	  fill: none;
+	  stroke: #ccc;
+	  stroke-width: 2px;
+	}
+	
+    </style>
+
+  </head>
+
+  <body>
+
+<!-- load the d3.js library -->	
+<script src="http://d3js.org/d3.v3.min.js"></script>
+	
+<script>
+
+var treeData = [
+  {
+    "name": "Mood",
+    "parent": "null",
+    "children": [
+      {
+        "name": "angry",
+        "parent": "Mood",
+        "children": [
+          {
+            "name": "aggravated",
+            "parent": "angry"
+          },
+          {
+            "name": "annoyed",
+            "parent": "angry"
+          },
+          {
+            "name": "bitchy",
+            "parent": "angry"
+          },
+          {
+            "name": "cranky",
+            "parent": "angry"
+          },
+          {
+            "name": "cynical",
+            "parent": "angry"
+          },
+          {
+            "name": "enraged",
+            "parent": "angry"
+          },
+          {
+            "name": "frustrated",
+            "parent": "angry"
+          },
+          {
+            "name": "grumpy",
+            "parent": "angry"
+          },
+          {
+            "name": "infuriated",
+            "parent": "angry"
+          },
+          {
+            "name": "irate",
+            "parent": "angry"
+          },
+          {
+            "name": "irritated",
+            "parent": "angry"
+          },
+          {
+            "name": "moody",
+            "parent": "angry"
+          },
+          {
+            "name": "pissed off",
+            "parent": "angry"
+          },
+          {
+            "name": "stressed",
+            "parent": "angry",
+            "children": [
+	          {
+	            "name": "rushed",
+	            "parent": "stressed"
+	          }
+	         ]
+          }
+        ]
+      },
+      {
+        "name": "awake",
+        "parent": "Mood"
+      }, 
+      {
+        "name": "confused",
+        "parent": "Mood",
+        "children": [
+	         {
+	        	"name": "curious",
+	            "parent": "confused"
+	          }
+	        ]
+      },
+      {
+        "name": "determined",
+        "parent": "Mood",
+        "children": [
+	         {
+	        	"name": "predatory",
+	            "parent": "determined"
+	          }
+	        ]
+      },
+      {
+        "name": "devious",
+        "parent": "Mood"
+      }, 
+      {
+        "name": "energetic",
+        "parent": "Mood",
+        "children": [
+	         {
+	        	"name": "bouncy",
+	            "parent": "energetic"
+	          },
+	          {
+	        	"name": "hyper",
+	            "parent": "energetic"
+	          }
+	        ]
+      },
+      {
+        "name": "enthralled",
+        "parent": "Mood"
+      }, 
+      {
+        "name": "happy",
+        "parent": "Mood",
+        "children": [
+	         {
+	        	"name": "amused",
+	            "parent": "happy"
+	          },
+	          {
+	        	"name": "cheerful",
+	            "parent": "happy"
+	          },
+	          {
+	        	"name": "chipper",
+	            "parent": "happy"
+	          },
+	          {
+	        	"name": "ecstatic",
+	            "parent": "happy"
+	          },
+	          {
+	        	"name": "excited",
+	            "parent": "happy",
+	            "children": [
+		         {
+		        	"name": "high",
+		            "parent": "excited"
+		          },
+		          {
+		        	"name": "horny",
+		            "parent": "excited"
+		          }
+	        ]
+	          },
+	          {
+	        	"name": "good",
+	            "parent": "happy"
+	          },
+	          {
+	        	"name": "grateful",
+	            "parent": "happy"
+	          },
+	          {
+	        	"name": "impressed",
+	            "parent": "happy"
+	          },
+	          {
+	        	"name": "jubilant",
+	            "parent": "happy"
+	          },
+	          {
+	        	"name": "loved",
+	            "parent": "happy"
+	          },
+	          {
+	        	"name": "optimistic",
+	            "parent": "happy",
+	            "children": [
+		         {
+		        	"name": "hopeful",
+		            "parent": "optimistic"
+		          }
+		          ]
+	          },
+	          {
+	        	"name": "pleased",
+	            "parent": "happy"
+	          },
+	          {
+	        	"name": "refreshed",
+	            "parent": "happy",
+	            "children": [
+		         {
+		        	"name": "rejuvenated",
+		            "parent": "refreshed"
+		          }
+		          ]
+	          },
+	          {
+	        	"name": "relaxed",
+	            "parent": "happy",
+	            "children": [
+		         {
+		        	"name": "calm",
+		            "parent": "relaxed"
+		          },
+		          {
+		        	"name": "mellow",
+		            "parent": "relaxed"
+		          },
+		          {
+		        	"name": "peaceful",
+		            "parent": "relaxed"
+		          },
+		          {
+		        	"name": "recumbent",
+		            "parent": "relaxed"
+		          },
+		          {
+		        	"name": "satisfied",
+		            "parent": "relaxed",
+		            "children": [
+			         {
+			        	"name": "content",
+			            "parent": "satisfied",
+			            "children": [
+				         {
+				        	"name": "complacent",
+				            "parent": "content"
+				          },
+				          {
+				        	"name": "indifferent",
+				            "parent": "content"
+				         }
+				         ]
+				        },
+			        {
+			        	"name": "full",
+			            "parent": "satisfied"
+			          },
+			          {
+			        	"name": "relieved",
+			            "parent": "satisfied"
+			          }
+		          	]
+		          	}
+		          ]
+	          },
+	          {
+		        	"name": "silly",
+		            "parent": "happy",
+		            "children": [
+		            {
+				        	"name": "crazy",
+				            "parent": "silly"
+				          },
+				          {
+				        	"name": "ditzy",
+				            "parent": "silly"
+				         },
+				         {
+				        	"name": "flirty",
+				            "parent": "silly"
+				         },
+				         {
+				        	"name": "giddy",
+				            "parent": "silly"
+				         },
+				         {
+				        	"name": "giggly",
+				            "parent": "silly"
+				         },
+				         {
+				        	"name": "mischievous",
+				            "parent": "silly",
+				            "children": [
+				            {
+				        	"name": "naughty",
+				            "parent": "mischievous"
+				         	},
+				            ]
+				         },
+				         {
+				        	"name": "quixotic",
+				            "parent": "silly"
+				         },
+				         {
+				        	"name": "weird",
+				            "parent": "silly"
+				         }
+		            ] 
+		          },
+		          {
+		        	"name": "thankful",
+		            "parent": "happy"
+		          },
+		          {
+		        	"name": "touched",
+		            "parent": "happy"
+		          }
+
+	        ]
+      },
+      {
+    	"name": "indescribable",
+        "parent": "Mood"
+      },
+      {
+    	"name": "nerdy",
+        "parent": "Mood",
+        "children": [
+        	{
+		    	"name": "dorky",
+		        "parent": "nerdy"
+		      },
+		      {
+		    	"name": "geeky",
+		        "parent": "nerdy"
+		      },
+        ]
+      },
+      {
+    	"name": "okay",
+        "parent": "Mood",
+        "children": [
+        	{
+		    	"name": "blah",
+		        "parent": "okay"
+		      },
+		      {
+		    	"name": "lazy",
+		        "parent": "okay",
+		        "children": [
+		        {
+			    	"name": "exanimate",
+			        "parent": "lazy",
+			        "children": [
+		        		{
+					    	"name": "apatheic",
+					        "parent": "exanimate"
+					      },
+					      {
+					    	"name": "blank",
+					        "parent": "exanimate"
+					      },
+		        ]
+
+			      },
+			       {
+			    	"name": "lethargic",
+			        "parent": "lazy"
+			      },
+			       {
+			    	"name": "listless",
+			        "parent": "lazy"
+			      }
+		        ]
+		      }
+        ]
+      },
+      {
+    	"name": "sad",
+        "parent": "Mood",
+	            "children": [
+        {
+	        	"name": "bored",
+	            "parent": "sad"
+	          },
+	          {
+	        	"name": "crappy",
+	            "parent": "sad"
+	         },
+	         {
+	        	"name": "crushed",
+	            "parent": "sad"
+	         },
+	         {
+	        	"name": "depressed",
+	            "parent": "sad"
+	         },
+	         {
+	        	"name": "disappointed",
+	            "parent": "sad"
+	         },
+	         {
+	        	"name": "discontent",
+	            "parent": "sad",
+	            "children": [
+	            {
+	        	"name": "envious",
+	            "parent": "discontent"
+	         	},
+	            ]
+	         },
+	         {
+	        	"name": "gloomy",
+	            "parent": "sad",
+	            "children": [
+	            {
+	        	"name": "pessimistic",
+	            "parent": "gloomy"
+	         	},
+	            ]
+	         },
+	         {
+	        	"name": "jealous",
+	            "parent": "sad"
+	         },
+	         {
+	        	"name": "jealous",
+	            "parent": "sad"
+	         },
+	         {
+	        	"name": "lonely",
+	            "parent": "sad"
+	         },
+	         {
+	        	"name": "melancholy",
+	            "parent": "sad"
+	         },
+	         {
+	        	"name": "morose",
+	            "parent": "sad"
+	         },
+	         {
+	        	"name": "numb",
+	            "parent": "sad"
+	         },
+	         {
+	        	"name": "rejected",
+	            "parent": "sad"
+	         },
+	         {
+	        	"name": "sympathetic",
+	            "parent": "sad"
+	         },
+	         {
+	        	"name": "uncomfortable",
+	            "parent": "sad",
+	             "children": [
+	            {
+	        	"name": "cold",
+	            "parent": "uncomfortable"
+	         	},
+	         	{
+	        	"name": "dirty",
+	            "parent": "uncomfortable"
+	         	},
+	         	{
+	        	"name": "drunk",
+	            "parent": "uncomfortable"
+	         	},
+	         	{
+	        	"name": "exhausted",
+	            "parent": "uncomfortable",
+	            "children": [
+		            {
+		        	"name": "drained",
+		            "parent": "exhausted"
+		         	},
+		         	{
+		        	"name": "tired",
+		            "parent": "exhausted",
+		            "children": [
+			            {
+			        	"name": "groggy",
+			            "parent": "tired"
+			         	},
+			         	{
+			        	"name": "sleepy",
+			            "parent": "tired"
+			         	}
+			            ]
+		         	}
+		            ]
+	         	},
+	         	{
+	        	"name": "guilty",
+	            "parent": "uncomfortable"
+	         	},
+	         	{
+	        	"name": "hot",
+	            "parent": "uncomfortable"
+	         	},
+	         	{
+	        	"name": "hungry",
+	            "parent": "uncomfortable"
+	         	},
+	         	{
+	        	"name": "restless",
+	            "parent": "uncomfortable"
+	         	},
+	         	{
+	        	"name": "sick",
+	            "parent": "uncomfortable",
+	            "children": [
+		            {
+		        	"name": "nauseated",
+		            "parent": "sick"
+		         	}
+		            ]
+	         	},
+	         	{
+	        	"name": "sore",
+	            "parent": "uncomfortable"
+	         	},
+	         	{
+	        	"name": "thirsty",
+	            "parent": "uncomfortable"
+	         	}
+	            ]
+	         },
+	         {
+	        	"name": "worried",
+	            "parent": "sad"
+	         }
+		 ] 
+      },
+	  {
+    	"name": "scared",
+        "parent": "Mood",
+        "children": [
+        	         	{
+	        	"name": "anxious",
+	            "parent": "scared",
+	            "children": [
+		            {
+		        	"name": "distressed",
+		            "parent": "anxious"
+		         	}
+		            ]
+	         	},
+	         	{
+	        	"name": "embarassed",
+	            "parent": "scared"
+	         	},
+	         	{
+	        	"name": "intimidated",
+	            "parent": "scared"
+	         	},
+	         	{
+	        	"name": "nervous",
+	            "parent": "scared"
+	         	}
+	            ]
+      },
+      	  {
+    	"name": "thoughtful",
+        "parent": "Mood",
+                    "children": [
+		            {
+		        	"name": "contemplative",
+		            "parent": "thoughtful"
+		         	},
+		         	{
+		        	"name": "nostalgic",
+		            "parent": "thoughtful"
+		         	},
+		         	{
+		        	"name": "pensive",
+		            "parent": "thoughtful"
+		         	}
+	            ]
+      },
+      	  {
+    	"name": "working",
+        "parent": "Mood",
+                            "children": [
+		            {
+		        	"name": "accomplished",
+		            "parent": "working"
+		         	},
+		         	{
+		        	"name": "artistic",
+		            "parent": "working"
+		         	},
+		         	{
+		        	"name": "busy",
+		            "parent": "working"
+		         	},
+		         	    {
+		        	"name": "creative",
+		            "parent": "working"
+		         	},
+		         	{
+		        	"name": "productive",
+		            "parent": "working"
+		         	}
+	            ]
+      }
+    ]
+  }
+];
+
+
+// ************** Generate the tree diagram	 *****************
+var margin = {top: 20, right: 120, bottom: 20, left: 120},
+	width = 960 - margin.right - margin.left,
+	height = 500 - margin.top - margin.bottom;
+	
+var i = 0,
+	duration = 750,
+	root;
+
+var tree = d3.layout.tree()
+	.size([height, width]);
+
+var diagonal = d3.svg.diagonal()
+	.projection(function(d) { return [d.y, d.x]; });
+
+var svg = d3.select("body").append("svg")
+	.attr("width", width + margin.right + margin.left)
+	.attr("height", height + margin.top + margin.bottom)
+  .append("g")
+	.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+root = treeData[0];
+root.x0 = height / 2;
+root.y0 = 0;
+  
+update(root);
+
+d3.select(self.frameElement).style("height", "500px");
+
+function update(source) {
+
+  // Compute the new tree layout.
+  var nodes = tree.nodes(root).reverse(),
+	  links = tree.links(nodes);
+
+  // Normalize for fixed-depth.
+  nodes.forEach(function(d) { d.y = d.depth * 180; });
+
+  // Update the nodes…
+  var node = svg.selectAll("g.node")
+	  .data(nodes, function(d) { return d.id || (d.id = ++i); });
+
+  // Enter any new nodes at the parent's previous position.
+  var nodeEnter = node.enter().append("g")
+	  .attr("class", "node")
+	  .attr("transform", function(d) { return "translate(" + source.y0 + "," + source.x0 + ")"; })
+	  .on("click", click);
+
+  nodeEnter.append("circle")
+	  .attr("r", 1e-6)
+	  .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });
+
+  nodeEnter.append("text")
+	  .attr("x", function(d) { return d.children || d._children ? -13 : 13; })
+	  .attr("dy", ".35em")
+	  .attr("text-anchor", function(d) { return d.children || d._children ? "end" : "start"; })
+	  .text(function(d) { return d.name; })
+	  .style("fill-opacity", 1e-6);
+
+  // Transition nodes to their new position.
+  var nodeUpdate = node.transition()
+	  .duration(duration)
+	  .attr("transform", function(d) { return "translate(" + d.y + "," + d.x + ")"; });
+
+  nodeUpdate.select("circle")
+	  .attr("r", 10)
+	  .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });
+
+  nodeUpdate.select("text")
+	  .style("fill-opacity", 1);
+
+  // Transition exiting nodes to the parent's new position.
+  var nodeExit = node.exit().transition()
+	  .duration(duration)
+	  .attr("transform", function(d) { return "translate(" + source.y + "," + source.x + ")"; })
+	  .remove();
+
+  nodeExit.select("circle")
+	  .attr("r", 1e-6);
+
+  nodeExit.select("text")
+	  .style("fill-opacity", 1e-6);
+
+  // Update the links…
+  var link = svg.selectAll("path.link")
+	  .data(links, function(d) { return d.target.id; });
+
+  // Enter any new links at the parent's previous position.
+  link.enter().insert("path", "g")
+	  .attr("class", "link")
+	  .attr("d", function(d) {
+		var o = {x: source.x0, y: source.y0};
+		return diagonal({source: o, target: o});
+	  });
+
+  // Transition links to their new position.
+  link.transition()
+	  .duration(duration)
+	  .attr("d", diagonal);
+
+  // Transition exiting nodes to the parent's new position.
+  link.exit().transition()
+	  .duration(duration)
+	  .attr("d", function(d) {
+		var o = {x: source.x, y: source.y};
+		return diagonal({source: o, target: o});
+	  })
+	  .remove();
+
+  // Stash the old positions for transition.
+  nodes.forEach(function(d) {
+	d.x0 = d.x;
+	d.y0 = d.y;
+  });
+}
+
+// Toggle children on click.
+function click(d) {
+  if (d.children) {
+	d._children = d.children;
+	d.children = null;
+  } else {
+	d.children = d._children;
+	d._children = null;
+  }
+  update(d);
+}
+
+</script>
+	
+  </body>
+</html>
