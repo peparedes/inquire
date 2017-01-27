@@ -1,0 +1,17 @@
+0
+reminiscence trigger trigger
+EXCLUDE trigger
+
+1
+neighbors
+EXCLUDE neighbors
+
+2
+happy times
+
+3
+happy times
+EXCLUDE happy
+
+4
+I redesigned my lifestyle to lose weight
