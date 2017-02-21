@@ -25,3 +25,15 @@ if __name__ == "__main__":
     print(r2)
 
     print(r2.json())
+
+
+    r3 = requests.post(
+        "http://localhost:8000/api/visualize/wordcloud",
+        json={
+            "results":results
+        }
+    )
+
+    print(r3)
+
+    print(r3.json())

@@ -6,13 +6,18 @@ from sklearn.metrics.pairwise import cosine_distances
 import networkx as nx
 import pandas as pd
 from community import community_louvain
+from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
+from collections import Counter
+import operator
+
+vectorizer = CountVectorizer(min_df=1, stop_words='english')
+analyze = vectorizer.build_analyzer()
 
 
 print("loading spacy..")
 nlp = spacy.load("en")
 print("done.")
 viz_blueprint = Blueprint("visualize", __name__, url_prefix="/visualize")
-new_blueprint = Blueprint("show", __name__, url_prefix="/show")
 
 
 @viz_blueprint.route("/epsilon", methods=["POST"])
@@ -101,3 +106,30 @@ def get_users():
         dict_['link'] = "http://" + contr + ".livejournal.com"
         lst.append(dict_)
     return jsonify({"results":lst})
+
+@viz_blueprint.route("/wordcloud", methods=["POST"])
+def wordcloud():
+    json_data = request.get_json()
+    results = json_data["results"]
+    return jsonify(get_wordcloud_json(top_ngrams(results)))
+
+def top_ngrams(results, n=20):
+    """Input:
+        communities: List of lists that contain indices corresponding to sentences in the original array
+        cluster: integer, the cluster to inspect
+        n: integer, number of most common """
+    sentences = results
+    ngrams = []
+    for s in sentences:
+        ngrams.extend(analyze(s))
+
+    counts = Counter(ngrams)
+
+    return sorted(counts.items(), key=operator.itemgetter(1))[::-1][:n]
+
+def get_wordcloud_json(ngram):
+    wordcloud = []
+    for word, count in ngram:
+        wordcloud.append({"text":word, "size":count})
+    return wordcloud
+
