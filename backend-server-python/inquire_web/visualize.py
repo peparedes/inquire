@@ -90,7 +90,7 @@ def get_epsilon_clusters(H, results):
 def get_users():
     contributors = request.get_json()
     results = contributors["results"]
-    contributors = pd.Series(results).value_counts()
+    contributors = pd.Series(results).value_counts()[:20]
     lst = []
     print(contributors)
     for contr, counts in zip(contributors.index, contributors.values):
