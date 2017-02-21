@@ -4,6 +4,7 @@ from werkzeug.serving import run_simple
 from inquire_web.visualize import viz_blueprint
 
 
+
 def build_app():
     app = Flask(__name__.split(".")[0])
     app.debug = True
@@ -37,4 +38,4 @@ def build_app():
 
 if __name__ == "__main__":
     app = build_app()
-    run_simple('0.0.0.0', 8080, app)
+    run_simple('0.0.0.0', 8000, app)
