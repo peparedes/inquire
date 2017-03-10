@@ -13,18 +13,21 @@ var count = 0;
 //   count += lines.length-1;
 // }
 
-val maxCount = 2000000;
-var users = CSMat(1,1e9.toInt);
+val maxCount = 20000000;
+var users = CSMat(1,maxCount);
+var keys = CSMat(1,maxCount);
 
-for(i <- 0 until users.length) {
-  users(i) = "";
-}
+// for(i <- 0 until users.length) {
+//   users(i) = "";
+// }
+
+var i = 0;
 
 for(fname <- files) {
   println(fname)
   // var subjects = CSMat(1,maxCount);
   // var ids = IMat(1,maxCount);
-  var i = 0;
+
 
   val lines = Source.fromFile(fname).getLines;
   val header = lines.next().split("\t");
@@ -48,9 +51,18 @@ for(fname <- files) {
     // users(i) = user;
     // subjects(i) = subject;
 
-    users(idx) = user;
+    // failure cases of tokenization
+    if(user.charAt(0) == '-'
+      || user.charAt(user.length()-1) == '-'
+      || user.matches(".*-[0-9].*")
+      || user.matches(".*[0-9]-.*")
+      || user.matches(".*0+.*")
+    ) {
+      users(i) = user;
+      keys(i) = user.replaceAll("[-0]+", "") + "|" + ditemid + "|" + timestamp;
+      i += 1;
+    }
 
-    i += 1;
 
     j += 1;
 
@@ -66,6 +78,8 @@ for(fname <- files) {
 }
 
 println("converting users...");
-val sparse_users = SBMat(users);
+val sparse_users = SBMat(users(0 until i));
+val sparse_keys = SBMat(keys(0 until i));
 println("saving users...");
-saveSBMat(outpath + "users.sbmat.lz4", sparse_users)
+saveSBMat(outpath + "users_dict_values.sbmat.lz4", sparse_users)
+saveSBMat(outpath + "users_dict_keys.sbmat.lz4", sparse_keys)
