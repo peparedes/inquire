@@ -1,0 +1,8 @@
+flask
+werkzeug
+numpy
+sklearn
+spacy
+networkx
+pandas
+community

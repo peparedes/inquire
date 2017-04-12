@@ -49,6 +49,7 @@ def compute_distance_matrix(results):
     dist_matrix = cosine_distances(vectors, vectors)
     return dist_matrix
 
+
 def get_graph(results, dist_matrix):
     """Returns subgraph H that will be shown in visualization."""
     il1 = np.tril(dist_matrix, -1)
@@ -72,6 +73,7 @@ def get_graph(results, dist_matrix):
 
     return H
 
+
 def get_communities(H):
     """Returns the clusters from the graph H."""
     d = community_louvain.generate_dendrogram(H)
@@ -80,6 +82,7 @@ def get_communities(H):
     for node, com in partition.items():
         communities[com] = communities[com] + [node]
     return communities
+
 
 def get_epsilon_clusters(H, results):
 
@@ -90,6 +93,7 @@ def get_epsilon_clusters(H, results):
     }
 
     return graph
+
 
 @viz_blueprint.route("/users", methods=["POST"])
 def get_users():
@@ -107,11 +111,13 @@ def get_users():
         lst.append(dict_)
     return jsonify({"results":lst})
 
+
 @viz_blueprint.route("/wordcloud", methods=["POST"])
 def wordcloud():
     json_data = request.get_json()
     results = json_data["results"]
     return jsonify(get_wordcloud_json(top_ngrams(results)))
+
 
 def top_ngrams(results, n=20):
     """Input:
@@ -126,6 +132,7 @@ def top_ngrams(results, n=20):
     counts = Counter(ngrams)
 
     return sorted(counts.items(), key=operator.itemgetter(1))[::-1][:n]
+
 
 def get_wordcloud_json(ngram):
     wordcloud = []
