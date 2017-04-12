@@ -35,7 +35,11 @@ def process_file(fname):
     for post in soup.find_all('post'):
         d = {}
         d['user'] = post.find('user').text
-        d['ditemid'] = post.find('ditemid').text
+        try:
+            d['ditemid'] = post.find('ditemid').text
+        except:
+            d['ditemid'] = '0'
+
         # d['url'] = post.find('url').text
         d['event_timestamp'] = post.find('event_timestamp').text
 
@@ -52,7 +56,7 @@ def process_file(fname):
         arr.append(d)
 
     return arr
-    
+
 
 p = Pool(4)
 results = p.map(process_file, fnames)
@@ -74,7 +78,7 @@ for i, arr in enumerate(results):
     # sys.stderr.flush()
 
     count += len(arr)
-    
+
     for d in arr:
         d['subject'] = d['subject'].replace(delimiter, '')
         writer.writerow(d)
@@ -84,9 +88,3 @@ for i, arr in enumerate(results):
 sys.stderr.write('\rdone processing {} ({} files, {} posts)                 \n'.format(
     folder,total, count))
 sys.stderr.flush()
-
-
-
-
-
-

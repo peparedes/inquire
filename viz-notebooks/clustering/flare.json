@@ -1,0 +1,156 @@
+{
+  "flare": {
+    "angry": {
+      "aggravated": 7074,
+      "annoyed": 7074,
+      "bitchy": 7074,
+      "cranky": 7074,
+      "cynical": 7074,
+      "enraged": 7074,
+      "frustrated": 7074,
+      "grumpy": 7074,
+      "irate": 7074,
+      "irritated": 7074,
+      "moody": 7074,
+      "pissed off": 7074,
+      "stressed": {
+        "rushed": 7074
+      }
+    },
+    "awake": 7074,
+    "confused": {
+      "curious": 7074
+    },
+    "determined": {
+      "predatory": 7074
+    },
+    "devious": 7074,
+    "energetic": {
+      "bouncy": 7074,
+      "hyper": 7074
+    },
+    "enthralled": 7074,
+    "happy": {
+      "amused": 7074,
+      "cheerful": 7074,
+      "chipper": 7074,
+      "ecstatic": 7074,
+      "excited": {
+        "high":7074,
+        "horny":7074
+      },
+      "good": 7074,
+      "grateful": 7074,
+      "impressed": 7074,
+      "jubilant": 7074,
+      "loved": 7074,
+      "optimistic": {
+        "hopeful":7074
+      },
+      "pleased":7074,
+      "refreshed":{
+        "rejuvenated":7074
+      },
+      "relaxed":{
+        "calm":7074,
+        "mellow":7074,
+        "peaceful":7074,
+        "recumbent":7074,
+        "satisfied":{
+          "content":{
+            "complacent":7074,
+            "indifferent":7074
+          },
+          "full":7074,
+          "relieved":7074
+        }
+      },
+      "silly":{
+        "crazy":7074,
+        "ditzy":7074,
+        "flirty":7074,
+        "giddy":7074,
+        "giggly":7074,
+        "mischievous":{
+        "naughty":7074
+        },
+        "quixotic":7074,
+        "weird":7074
+      },
+      "thankful":7074,
+      "touched":7074
+    },
+    "indescribable": 7074,
+    "nerdy": {
+      "dorky": 7074,
+      "geeky":7074
+    },
+    "okay":{
+    "blah":7074,
+    "lazy": {
+      "exanimate":{
+        "apatheic":7074,
+        "blank":7074
+      },
+      "lethargic":7074,
+      "listless":7074
+    }
+  },
+  "sad":{
+    "bored":7074,
+    "crappy":7074,
+    "crushed":7074,
+    "depressed":7074,
+    "disappointed":7074,
+    "discontent":{
+      "envious":7074
+    },
+    "gloomy":{
+      "pessimistic":7074
+    },
+    "jealous":7074,
+    "lonely":7074,
+    "melancholy":7074,
+    "morose":7074,
+    "numb":7074,
+    "rejected":7074,
+    "sympathetic":7074,
+    "uncomfortable":{
+      "cold":7074,
+      "dirty":7074,
+      "drunk":7074,
+      "exhausted":{
+        "drained":7074,
+        "tired":{
+          "groggy":7074,
+          "sleepy":7074
+        }
+      },
+      "guilty":7074,
+      "hot":7074,
+      "hungry":7074,
+      "restless":7074,
+      "sick":{
+        "nauseated":7074
+      },
+      "sore":7074,
+      "thirsty":7074
+    },
+    "worried":7074
+  },
+  "scared":{
+    "anxious":{
+      "distressed":7074
+    },
+    "embarassed":7074,
+    "intimidated":7074,
+    "nervous":7074
+  },
+  "thoughtful":{
+    "contemplative":7074,
+    "nostalgic":7074,
+    "pensive":7074
+  }
+
+  }
+}

@@ -1,0 +1,13 @@
+Sample JSON: 
+
+{“result_count”:<number of results returned>,
+“query”:<what the query used for the results is>,
+“query_results”:[“sentence1”, “sentence2”, ….], (sorted by similarity score)
+“cosine_similarity”:[<cos_similarity_sentenc1>, <cos_similarity_sentence2> ],
+“max_similarity_word”:[<most_similar word to query from sentence1>, <most_similar word to query from sentence2>, … ],
+“sentence_vector”:[<aggregated vector for sentence 1>, <aggregated vector for sentence2>, ….],
+“user_id”:[<user_id_for author of 1st sentence>, ….],
+“emotion”:[<emotion for sentence 1>, <emotion for sentence 2>,…],
+“url”:[<url for sentence 1>, <url for sentence 2>, …],
+“emotion”:[<emotion corresponding to sentence 1>, …]
+} 
