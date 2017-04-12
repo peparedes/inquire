@@ -1,6 +1,8 @@
-from inquire_web.visualize import compute_distance_matrix, get_epsilon_clusters
-from inquire_web.utils import load_sample_data
 import os
+
+from inquire_web.visualize import compute_distance_matrix, get_epsilon_clusters
+
+from inquire_web.utils import load_sample_data
 
 if __name__ == "__main__":
     print(os.getcwd())

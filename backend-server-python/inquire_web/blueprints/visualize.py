@@ -7,10 +7,13 @@ import networkx as nx
 from sklearn.feature_extraction.text import CountVectorizer
 from collections import Counter
 import operator
+from tsne import bh_sne
+import logging
+log = logging.getLogger(__name__)
 
-print("loading spacy..")
+log.debug("loading spacy..")
 nlp = spacy.load("en")
-print("done.")
+log.debug("done.")
 viz_blueprint = Blueprint("visualize", __name__, url_prefix="/visualize")
 
 
@@ -18,8 +21,18 @@ viz_blueprint = Blueprint("visualize", __name__, url_prefix="/visualize")
 def get_epsilon_graph_visualization():
     json_data = request.get_json()
     results = json_data["results"]
-    distances = compute_distance_matrix(results)
+    vectors = [get_sentence_vector(x) for x in results]
+    distances = compute_distance_matrix(vectors)
     return jsonify(get_epsilon_clusters(results, distances))
+
+
+@viz_blueprint.route("/tsne", methods=["POST"])
+def get_tsne():
+    json_data = request.get_json()
+    results = json_data["results"]
+    vectors = [get_sentence_vector(x) for x in results]
+    X_2d = bh_sne(np.array(vectors), pca_d=None, d=2, perplexity=5.0, theta=0.5)
+    return jsonify(list(X_2d))
 
 
 def get_sentence_vector(q):
@@ -36,8 +49,7 @@ def get_sentence_vector(q):
     return vect
 
 
-def compute_distance_matrix(results):
-    vectors = [get_sentence_vector(x) for x in results]
+def compute_distance_matrix(vectors):
     dist_matrix = cosine_distances(vectors, vectors)
     return dist_matrix
 
@@ -56,7 +68,7 @@ def get_epsilon_clusters(results, dist_matrix):
                 edges.append((i, j))
     G = nx.Graph(edges)
     # number of connected components in Graph
-    print("Have %s connected components in epsilon clustering graph" % len(list(nx.connected_components(G))))
+    log.debug("Have %s connected components in epsilon clustering graph" % len(list(nx.connected_components(G))))
 
     # remove all the vertices with a degree of 80 or more
     low_degree = [x for x, v in G.degree().items() if v < 80]
