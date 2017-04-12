@@ -5,4 +5,4 @@ sklearn
 spacy
 networkx
 pandas
-community
+git+https://github.com/taynaud/python-louvain.git

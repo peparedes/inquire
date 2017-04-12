@@ -4,7 +4,7 @@ import requests
 import logging
 log = logging.getLogger(__name__)
 
-search_blueprint = Blueprint("visualize", __name__, url_prefix="/visualize")
+search_blueprint = Blueprint("search", __name__, url_prefix="/search")
 
 search_api_path = None
 
