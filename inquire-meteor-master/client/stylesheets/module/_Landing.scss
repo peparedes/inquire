@@ -1,0 +1,27 @@
+.main{
+  padding-top:50px;
+}
+
+// TODO: customize margin-top for diff screen sizes
+.jumbotron {
+background-image: url(/inquire.jpg);
+background-size: cover;
+background-position: center;
+width : 100%;
+height: auto;
+background-repeat: no-repeat;
+// margin-top:-50px;
+// min-height: 300px;
+}
+
+
+.featurette-divider {
+  margin: 80px 0; /* Space out the Bootstrap <hr> more */
+}
+
+/* Thin out the marketing headings */
+.featurette-heading {
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -1px;
+}
