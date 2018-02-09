@@ -1,0 +1,55 @@
+.navbar {
+  border-radius: 0;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  // background-color: grey;
+}
+
+#resLoading{
+  display: none;
+}
+
+.fa:hover{
+  cursor: pointer;
+}
+
+.greenbg{
+  background-color: #dff0d8;
+}
+
+.normalbg{
+  background-color: #F8ADAD;
+}
+
+.username:hover{
+  cursor: pointer;
+}
+
+#greenbg{
+  background-color: #dff0d8;
+}
+
+#normalbg{
+  background-color: #F8ADAD;
+}
+
+.fa.fa-trash-o {
+  color:red;
+}
+
+.fa.fa-play-circle-o {
+  color:green;
+}
+
+.fa.fa-search {
+  color:green;
+}
+
+body{
+  // background-color: #F9F7F7;
+}
+
+.panel-title{
+  cursor: pointer;
+}

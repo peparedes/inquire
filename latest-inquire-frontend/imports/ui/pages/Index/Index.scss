@@ -1,0 +1,31 @@
+@import '../../stylesheets/mixins';
+@import '../../stylesheets/colors';
+
+.Index {
+  padding: 50px;
+  text-align: center;
+}
+
+#resLoading{
+  display: none;
+}
+
+@include breakpoint(tablet) {
+  .Index {
+    padding: 30px;
+
+    footer {
+      margin: 30px -30px -30px;
+    }
+  }
+}
+
+@include breakpoint(desktop) {
+  .Index {
+    padding: 40px;
+
+    footer {
+      margin: 40px -40px -40px;
+    }
+  }
+}
